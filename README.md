@@ -1,2 +1,2 @@
 # portfolio
-personal portfoliooooooooo
+personal portfolio
