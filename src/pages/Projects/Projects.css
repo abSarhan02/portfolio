@@ -1,0 +1,168 @@
+.projects-page {
+  width: 100%;
+  max-width: 1150px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 150px 25px 100px;
+}
+
+/* Header */
+.projects-header {
+  max-width: 700px;
+  margin-bottom: 80px;
+}
+
+.section-label {
+  margin-bottom: 12px;
+  color: var(--accent-bright);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.projects-header h1 {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: clamp(48px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.projects-intro {
+  max-width: 650px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* Section */
+.projects-section {
+  width: 100%;
+  margin-bottom: 95px;
+}
+
+.projects-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Section header */
+.projects-section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.projects-section-number {
+  flex-shrink: 0;
+  padding-top: 5px;
+  color: var(--text-muted);
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.projects-section-header h2 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.projects-section-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Project grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+/* Frontend grid */
+.projects-grid-frontend {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+  .projects-page {
+    padding-top: 130px;
+  }
+
+  .projects-grid-frontend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .projects-page {
+    padding: 125px 20px 70px;
+  }
+
+  .projects-header {
+    margin-bottom: 60px;
+  }
+
+  .projects-header h1 {
+    font-size: 48px;
+  }
+
+  .projects-intro {
+    font-size: 15px;
+  }
+
+  .projects-section {
+    margin-bottom: 70px;
+  }
+
+  .projects-section-header {
+    gap: 13px;
+    margin-bottom: 25px;
+    padding-bottom: 17px;
+  }
+
+  .projects-section-number {
+    padding-top: 4px;
+    font-size: 10px;
+  }
+
+  .projects-section-header h2 {
+    font-size: 21px;
+  }
+
+  .projects-section-header p {
+    font-size: 13px;
+  }
+
+  .projects-grid,
+  .projects-grid-frontend {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .projects-page {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .projects-header h1 {
+    font-size: 42px;
+  }
+}

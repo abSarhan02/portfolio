@@ -1,0 +1,56 @@
+.stars-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#stars,
+#stars2,
+#stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: var(--stars);
+  animation: animStar 50s linear infinite;
+}
+
+#stars::after,
+#stars2::after,
+#stars3::after {
+  content: "";
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  box-shadow: var(--stars);
+}
+
+#stars {
+  opacity: 0.75;
+}
+
+#stars2 {
+  opacity: 0.5;
+  animation-duration: 100s;
+}
+
+#stars3 {
+  opacity: 0.35;
+  animation-duration: 150s;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100vh);
+  }
+}

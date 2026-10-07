@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Dark theme */
+:root {
+  /* Primary */
+  --primary: #e5e7eb;
+  --primary-hover: #cbd5e1;
+
+  /* Accent */
+  --accent-light: #f1f5f9;
+  --accent-bright: #d1d5db;
+
+  /* Background */
+  --bg-dark: #090a0c;
+  --bg-deep: #030405;
+  --bg-accent: #121417;
+
+  /* Background glows */
+  --bg-glow-1: rgba(255, 255, 255, 0.07);
+  --bg-glow-2: rgba(203, 213, 225, 0.045);
+  --bg-glow-3: rgba(148, 163, 184, 0.05);
+
+  /* Text */
+  --text: #f8fafc;
+  --text-muted: #9299a3;
+  --text-secondary: #c5cad1;
+
+  /* Glass */
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-hover: rgba(255, 255, 255, 0.075);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(255, 255, 255, 0.28);
+
+  /* Shadows */
+  --accent-shadow: rgba(255, 255, 255, 0.08);
+  --accent-shadow-strong: rgba(255, 255, 255, 0.14);
+  --accent-glow: rgba(255, 255, 255, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.35);
+
+  /* Button */
+  --button-text: #090a0c;
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, #cbd5e1, #f8fafc);
+
+  /* Stars */
+  --star-color-1: #ffffff;
+  --star-color-2: #d1d5db;
+  --star-color-3: #9ca3af;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  /* Primary */
+  --primary: #18181b;
+  --primary-hover: #27272a;
+
+  /* Accent */
+  --accent-light: #3f3f46;
+  --accent-bright: #18181b;
+
+  /* Background */
+  --bg-dark: #deffde;
+  --bg-deep: #ffffff;
+  --bg-accent: #e9eaec;
+
+  /* Background glows */
+  --bg-glow-1: rgba(0, 0, 0, 0.035);
+  --bg-glow-2: rgba(100, 116, 139, 0.04);
+  --bg-glow-3: rgba(0, 0, 0, 0.025);
+
+  /* Text */
+  --text: #18181b;
+  --text-muted: #71717a;
+  --text-secondary: #52525b;
+
+  /* Glass */
+  --glass: rgba(255, 255, 255, 0.52);
+  --glass-hover: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.09);
+  --glass-border-hover: rgba(0, 0, 0, 0.22);
+
+  /* Shadows */
+  --accent-shadow: rgba(0, 0, 0, 0.08);
+  --accent-shadow-strong: rgba(0, 0, 0, 0.14);
+  --accent-glow: rgba(0, 0, 0, 0.07);
+  --card-shadow: rgba(0, 0, 0, 0.12);
+
+  /* Button */
+  --button-text: #ffffff;
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, #27272a, #09090b);
+
+  /* Stars */
+  --star-color-1: #52525b;
+  --star-color-2: #71717a;
+  --star-color-3: #a1a1aa;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% 10%, var(--bg-glow-1), transparent 40%),
+    radial-gradient(900px 900px at 50% 90%, var(--bg-glow-2), transparent 55%),
+    radial-gradient(1200px 900px at 120% -20%, var(--bg-glow-3), transparent 60%),
+    linear-gradient(180deg, var(--bg-accent), var(--bg-dark) 40%, var(--bg-deep));
+  background-attachment: fixed;
+  overflow-x: hidden;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

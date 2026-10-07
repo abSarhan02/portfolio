@@ -1,0 +1,89 @@
+.project-card {
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+  background: var(--glass);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+/* Glow */
+.project-card::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: -80px;
+  right: -80px;
+  border-radius: 50%;
+  background: var(--primary);
+  filter: blur(90px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Hover */
+.project-card:hover {
+  transform: translateY(-8px);
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 55px var(--accent-shadow);
+}
+
+/* Title */
+.project-card h3 {
+  position: relative;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 24px;
+}
+
+/* Description */
+.project-card p {
+  position: relative;
+  margin-bottom: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Technologies */
+.project-tech {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.project-tech span {
+  padding: 4px 8px;
+  color: var(--accent-light);
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-light) 25%, transparent);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Link */
+.project-link {
+  position: relative;
+  display: inline-block;
+  color: var(--accent-bright);
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.project-link:hover {
+  color: var(--text);
+  transform: translateX(4px);
+}
