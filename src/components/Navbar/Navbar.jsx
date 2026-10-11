@@ -29,7 +29,11 @@ function Navbar() {
             type="button"
             className="language-toggle"
             onClick={toggleLanguage}
-            aria-label="Change language"
+            aria-label={
+              translations[language].languageToggle[
+                language === "it" ? "switchToEnglish" : "switchToItalian"
+              ]
+            }
           >
             {language === "it" ? "EN" : "IT"}
           </button>

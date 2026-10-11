@@ -9,7 +9,7 @@ import "./Home.css";
 function Home() {
   const { language } = useLanguage();
   const content = translations[language].home;
-  const [terminalLines, setTerminalLines] = useState(["Ready to build."]);
+  const [terminalLines, setTerminalLines] = useState(["ready"]);
   const [running, setRunning] = useState(false);
 
   const runCode = () => {
@@ -25,11 +25,11 @@ function Home() {
     }, 700);
 
     setTimeout(() => {
-      setTerminalLines((lines) => [...lines, "Learning. Building. Improving."]);
+      setTerminalLines((lines) => [...lines, "progress"]);
     }, 1400);
 
     setTimeout(() => {
-      setTerminalLines((lines) => [...lines, "Build successful !"]);
+      setTerminalLines((lines) => [...lines, "success"]);
       setRunning(false);
     }, 2100);
   };
@@ -146,7 +146,7 @@ function Home() {
 
               <div className="indent-2">
                 System.out.println(
-                <span className="code-string">"Learning. Building. Improving."</span>
+                <span className="code-string">"{content.codeMessage}"</span>
                 );
               </div>
 
@@ -156,18 +156,24 @@ function Home() {
             </div>
 
             <div className="code-terminal">
-              <div className="terminal-title">TERMINAL</div>
+              <div className="terminal-title">{content.terminalTitle}</div>
 
               <div className="terminal-output">
                 {terminalLines.map((line, index) => (
                   <div
                     key={`${line}-${index}`}
-                    className={line.includes("successful") ? "terminal-success" : ""}
+                    className={line === "success" ? "terminal-success" : ""}
                   >
                     <span className="terminal-symbol">
                       {line.startsWith(">") ? "" : "› "}
                     </span>
-                    {line}
+                    {line === "ready"
+                      ? content.terminalReady
+                      : line === "progress"
+                        ? content.terminalProgress
+                        : line === "success"
+                          ? content.terminalSuccess
+                          : line}
                   </div>
                 ))}
 

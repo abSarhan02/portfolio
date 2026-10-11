@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext";
+import projectTranslations from "../../data/projectTranslations";
+import { translations } from "../../data/siteContent";
+
 import "./ProjectCard.css";
 
 function ProjectCard({ project }) {
+  const { language } = useLanguage();
+  const localizedProject =
+    language === "en"
+      ? projectTranslations[project.id] ?? project
+      : project;
+
   return (
     <article className="project-card">
       <h3>{project.title}</h3>
 
-      <p>{project.description}</p>
+      <p>{localizedProject.description}</p>
 
       <div className="project-tech">
         {project.technologies.map((technology) => (
@@ -15,7 +25,7 @@ function ProjectCard({ project }) {
       </div>
 
       <Link to={`/projects/${project.id}`} className="project-link">
-        Scopri il progetto →
+        {translations[language].projects.discoverProject} →
       </Link>
     </article>
   );

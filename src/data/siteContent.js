@@ -33,11 +33,16 @@ export const translations = {
       projectButton: "Vedi i progetti",
       contactButton: "Contattami",
       availability: "Disponibile per nuove opportunità",
-      run: "▶ Run",
-      running: "Running...",
+      run: "▶ Esegui",
+      running: "Esecuzione...",
+      terminalTitle: "TERMINALE",
+      terminalReady: "Pronto a creare.",
+      terminalProgress: "Imparo. Costruisco. Miglioro.",
+      terminalSuccess: "Build completata!",
+      codeMessage: "Imparo. Costruisco. Miglioro.",
     },
     about: {
-      label: "ABOUT ME",
+      label: "CHI SONO",
       title: "Chi sono",
       intro:
         "Full Stack Developer e IT Specialist con esperienza nello sviluppo web, supporto IT e gestione di applicazioni software.",
@@ -60,7 +65,7 @@ export const translations = {
       ],
     },
     contact: {
-      label: "CONTACT",
+      label: "CONTATTI",
       title: "Parliamone.",
       description:
         "Sono disponibile per opportunità lavorative, collaborazioni e progetti in ambito sviluppo software e IT.",
@@ -68,11 +73,15 @@ export const translations = {
       linkedIn: "LinkedIn",
       gitHub: "GitHub",
     },
+    projects: {
+      discoverProject: "Scopri il progetto",
+    },
     projectDetail: {
       project: "PROGETTO",
       overview: "PANORAMICA",
       features: "FUNZIONALITÀ",
       mainFeatures: "Funzionalità principali",
+      projectOverviewTitle: "Il progetto",
       stack: "STACK",
       type: "TIPO",
       year: "ANNO",
@@ -83,9 +92,17 @@ export const translations = {
       liveDemo: "Live Demo",
       github: "GitHub",
     },
+    themeToggle: {
+      enableLight: "Attiva tema chiaro",
+      enableDark: "Attiva tema scuro",
+      lightTitle: "Tema chiaro",
+      darkTitle: "Tema scuro",
+    },
     languageToggle: {
       label: "IT",
       englishLabel: "EN",
+      switchToEnglish: "Switch language to English",
+      switchToItalian: "Passa alla lingua italiana",
     },
   },
   en: {
@@ -106,6 +123,11 @@ export const translations = {
       availability: "Available for new opportunities",
       run: "▶ Run",
       running: "Running...",
+      terminalTitle: "TERMINAL",
+      terminalReady: "Ready to build.",
+      terminalProgress: "Learning. Building. Improving.",
+      terminalSuccess: "Build successful!",
+      codeMessage: "Learning. Building. Improving.",
     },
     about: {
       label: "ABOUT ME",
@@ -139,11 +161,15 @@ export const translations = {
       linkedIn: "LinkedIn",
       gitHub: "GitHub",
     },
+    projects: {
+      discoverProject: "Discover the project",
+    },
     projectDetail: {
       project: "PROJECT",
       overview: "OVERVIEW",
       features: "FEATURES",
       mainFeatures: "Main features",
+      projectOverviewTitle: "The project",
       stack: "STACK",
       type: "TYPE",
       year: "YEAR",
@@ -154,9 +180,17 @@ export const translations = {
       liveDemo: "Live Demo",
       github: "GitHub",
     },
+    themeToggle: {
+      enableLight: "Enable light theme",
+      enableDark: "Enable dark theme",
+      lightTitle: "Light theme",
+      darkTitle: "Dark theme",
+    },
     languageToggle: {
       label: "EN",
       englishLabel: "IT",
+      switchToEnglish: "Switch language to English",
+      switchToItalian: "Switch language to Italian",
     },
   },
 };

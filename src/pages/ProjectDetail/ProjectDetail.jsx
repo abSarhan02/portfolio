@@ -9,6 +9,7 @@ import {
 
 import { useLanguage } from "../../context/LanguageContext";
 import projects from "../../data/projects";
+import projectTranslations from "../../data/projectTranslations";
 import { translations } from "../../data/siteContent";
 
 import "./ProjectDetail.css";
@@ -18,9 +19,11 @@ function ProjectDetail() {
   const { language } = useLanguage();
   const content = translations[language].projectDetail;
 
-  const project = projects.find(
-    (project) => project.id === id
-  );
+  const project = projects.find((project) => project.id === id);
+  const localizedProject =
+    language === "en" && project
+      ? projectTranslations[project.id] ?? project
+      : project;
 
   if (!project) {
     return (
@@ -58,7 +61,7 @@ function ProjectDetail() {
         <h1>{project.title}</h1>
 
         <p className="project-description">
-          {project.description}
+          {localizedProject.description}
         </p>
 
         <div className="project-actions">
@@ -142,11 +145,11 @@ function ProjectDetail() {
             </p>
 
             <h2>
-              {language === "it" ? "Il progetto" : "The project"}
+              {content.projectOverviewTitle}
             </h2>
 
             <p>
-              {project.overview || project.description}
+              {localizedProject.overview || localizedProject.description}
             </p>
 
           </div>
@@ -164,7 +167,7 @@ function ProjectDetail() {
 
               <div className="features-list">
 
-                {project.features.map((feature) => (
+                {localizedProject.features.map((feature) => (
                   <div
                     className="feature-item"
                     key={feature}
@@ -216,7 +219,7 @@ function ProjectDetail() {
                 </span>
 
                 <p>
-                  {project.type}
+                  {localizedProject.type}
                 </p>
 
               </div>
