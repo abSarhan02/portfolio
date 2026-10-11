@@ -1,3 +1,49 @@
+export const projectSections = {
+  it: [
+    {
+      id: "featured",
+      number: "01",
+      title: "Progetti principali",
+      description: "I progetti più completi e rappresentativi del mio percorso.",
+    },
+    {
+      id: "java",
+      number: "02",
+      title: "Java",
+      description:
+        "Progetti dedicati a Java e alla programmazione orientata agli oggetti.",
+    },
+    {
+      id: "frontend",
+      number: "03",
+      title: "HTML / CSS / JavaScript",
+      description:
+        "Siti web, landing page ed esercitazioni dedicate allo sviluppo frontend.",
+    },
+  ],
+  en: [
+    {
+      id: "featured",
+      number: "01",
+      title: "Featured projects",
+      description: "The most complete and representative projects from my journey.",
+    },
+    {
+      id: "java",
+      number: "02",
+      title: "Java",
+      description: "Projects focused on Java and object-oriented programming.",
+    },
+    {
+      id: "frontend",
+      number: "03",
+      title: "HTML / CSS / JavaScript",
+      description:
+        "Websites, landing pages and exercises focused on frontend development.",
+    },
+  ],
+};
+
 const projects = [
   // =====================================================
   // PROGETTI PRINCIPALI

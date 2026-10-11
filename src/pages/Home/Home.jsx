@@ -1,26 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import {
-  FaJava,
-  FaReact,
-  FaGitAlt,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaBootstrap,
-} from "react-icons/fa";
-import { SiSpringboot, SiTypescript, SiMysql } from "react-icons/si";
+import { useLanguage } from "../../context/LanguageContext";
+import { techStack, translations } from "../../data/siteContent";
 
 import "./Home.css";
 
 function Home() {
+  const { language } = useLanguage();
+  const content = translations[language].home;
   const [terminalLines, setTerminalLines] = useState(["Ready to build."]);
-
   const [running, setRunning] = useState(false);
 
   const runCode = () => {
-    if (running) return;
+    if (running) {
+      return;
+    }
 
     setRunning(true);
     setTerminalLines(["> javac Developer.java"]);
@@ -35,109 +30,69 @@ function Home() {
 
     setTimeout(() => {
       setTerminalLines((lines) => [...lines, "Build successful !"]);
-
       setRunning(false);
     }, 2100);
   };
 
+  const codeSkills = [
+    "Java",
+    "Spring Boot",
+    "React",
+    "JavaScript",
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "Bootstrap",
+    "MySQL",
+    "Git",
+  ];
+
   return (
     <main className="home-page">
       <section className="hero">
-        {/* LEFT */}
         <div className="hero-content">
-          <p className="hero-small">Ciao, sono</p>
+          <p className="hero-small">{content.intro}</p>
 
           <h1>
             Abdelkhalek <span>Sarhan</span>
           </h1>
 
           <h2>
-            Full Stack Developer
+            {content.role}
             <span className="role-separator"> & </span>
-            IT Specialist
+            {content.specialist}
           </h2>
 
-          <p className="hero-description">
-            Sviluppo applicazioni web e software con particolare interesse per
-            Java, Spring Boot e tecnologie frontend moderne.
-          </p>
+          <p className="hero-description">{content.description}</p>
 
-          {/* TECH STACK */}
           <div className="hero-stack">
-            <div className="stack-item">
-              <FaJava />
-              <span>Java</span>
-            </div>
-
-            <div className="stack-item">
-              <SiSpringboot />
-              <span>Spring Boot</span>
-            </div>
-
-            <div className="stack-item">
-              <FaReact />
-              <span>React</span>
-            </div>
-
-            <div className="stack-item">
-              <FaJs />
-              <span>JavaScript</span>
-            </div>
-
-            <div className="stack-item">
-              <SiTypescript />
-              <span>TypeScript</span>
-            </div>
-
-            <div className="stack-item">
-              <FaHtml5 />
-              <span>HTML</span>
-            </div>
-
-            <div className="stack-item">
-              <FaCss3Alt />
-              <span>CSS</span>
-            </div>
-
-            <div className="stack-item">
-              <FaBootstrap />
-              <span>Bootstrap</span>
-            </div>
-
-            <div className="stack-item">
-              <SiMysql />
-              <span>MySQL</span>
-            </div>
-
-            <div className="stack-item">
-              <FaGitAlt />
-              <span>Git</span>
-            </div>
+            {techStack.map(({ name, Icon }) => (
+              <div className="stack-item" key={name}>
+                <Icon />
+                <span>{name}</span>
+              </div>
+            ))}
           </div>
 
-          {/* BUTTONS */}
           <div className="hero-buttons">
             <Link to="/projects" className="btn btn-primary">
-              Vedi i progetti
+              {content.projectButton}
               <span className="btn-arrow">→</span>
             </Link>
 
             <Link to="/contact" className="btn btn-secondary">
-              Contattami
+              {content.contactButton}
             </Link>
           </div>
 
-          {/* STATUS */}
           <div className="hero-status">
             <span className="status-dot"></span>
-            <span>Disponibile per nuove opportunità</span>
+            <span>{content.availability}</span>
           </div>
         </div>
 
-        {/* RIGHT */}
         <div className="hero-code">
           <div className="code-window">
-            {/* HEADER */}
             <div className="code-header">
               <div className="window-controls">
                 <span></span>
@@ -148,15 +103,13 @@ function Home() {
               <span className="code-file">Developer.java</span>
 
               <button className="code-run" onClick={runCode} disabled={running}>
-                {running ? "Running..." : "▶ Run"}
+                {running ? content.running : content.run}
               </button>
             </div>
 
-            {/* JAVA CODE */}
             <div className="code-content">
               <div>
-                <span className="code-keyword">public class</span> Developer{" "}
-                {"{"}
+                <span className="code-keyword">public class</span> Developer {"{"}
               </div>
 
               <br />
@@ -177,45 +130,11 @@ function Home() {
                 <span className="code-type">String[]</span> stack = {"{"}
               </div>
 
-              <div className="indent-2">
-                <span className="code-string">"Java"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"Spring Boot"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"React"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"JavaScript"</span>,
-              </div>
-              
-              <div className="indent-2">
-                <span className="code-string">"TypeScript"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"HTML"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"CSS"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"Bootstrap"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"MySQL"</span>,
-              </div>
-
-              <div className="indent-2">
-                <span className="code-string">"Git"</span>
-              </div>
+              {codeSkills.map((technology) => (
+                <div className="indent-2" key={technology}>
+                  <span className="code-string code-stack-item">{`"${technology}"`}</span>,
+                </div>
+              ))}
 
               <div className="indent-1">{"};"}</div>
 
@@ -227,9 +146,7 @@ function Home() {
 
               <div className="indent-2">
                 System.out.println(
-                <span className="code-string">
-                  "Learning. Building. Improving."
-                </span>
+                <span className="code-string">"Learning. Building. Improving."</span>
                 );
               </div>
 
@@ -238,22 +155,18 @@ function Home() {
               <div>{"}"}</div>
             </div>
 
-            {/* TERMINAL */}
             <div className="code-terminal">
               <div className="terminal-title">TERMINAL</div>
 
               <div className="terminal-output">
                 {terminalLines.map((line, index) => (
                   <div
-                    key={index}
-                    className={
-                      line.includes("successful") ? "terminal-success" : ""
-                    }
+                    key={`${line}-${index}`}
+                    className={line.includes("successful") ? "terminal-success" : ""}
                   >
                     <span className="terminal-symbol">
                       {line.startsWith(">") ? "" : "› "}
                     </span>
-
                     {line}
                   </div>
                 ))}

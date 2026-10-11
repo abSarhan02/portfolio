@@ -7,12 +7,16 @@ import {
   FaArrowLeft
 } from "react-icons/fa";
 
+import { useLanguage } from "../../context/LanguageContext";
 import projects from "../../data/projects";
+import { translations } from "../../data/siteContent";
 
 import "./ProjectDetail.css";
 
 function ProjectDetail() {
   const { id } = useParams();
+  const { language } = useLanguage();
+  const content = translations[language].projectDetail;
 
   const project = projects.find(
     (project) => project.id === id
@@ -21,14 +25,14 @@ function ProjectDetail() {
   if (!project) {
     return (
       <main className="project-detail">
-        <h1>Progetto non trovato</h1>
+        <h1>{content.notFound}</h1>
 
         <Link
           to="/projects"
           className="project-back"
         >
           <FaArrowLeft />
-          Torna ai progetti
+          {content.goBack}
         </Link>
       </main>
     );
@@ -37,10 +41,6 @@ function ProjectDetail() {
   return (
     <main className="project-detail">
 
-      {/* =====================
-          HEADER
-      ====================== */}
-
       <section className="project-hero">
 
         <Link
@@ -48,11 +48,11 @@ function ProjectDetail() {
           className="project-back"
         >
           <FaArrowLeft />
-          Indietro
+          {content.back}
         </Link>
 
         <p className="section-label">
-          PROGETTO
+          {content.project}
         </p>
 
         <h1>{project.title}</h1>
@@ -70,7 +70,7 @@ function ProjectDetail() {
               rel="noreferrer"
               className="project-primary-action"
             >
-              Live Demo
+              {content.liveDemo}
               <FaExternalLinkAlt />
             </a>
           )}
@@ -83,18 +83,13 @@ function ProjectDetail() {
               className="project-secondary-action"
             >
               <FaGithub />
-              GitHub
+              {content.github}
             </a>
           )}
 
         </div>
 
       </section>
-
-
-      {/* =====================
-          PREVIEW
-      ====================== */}
 
       {project.live && (
         <section className="project-preview">
@@ -126,7 +121,7 @@ function ProjectDetail() {
 
             <iframe
               src={project.live}
-              title={`Preview ${project.title}`}
+              title={`${content.open} ${project.title}`}
               className="project-iframe"
               loading="lazy"
             />
@@ -136,25 +131,18 @@ function ProjectDetail() {
         </section>
       )}
 
-
-      {/* =====================
-          CONTENT
-      ====================== */}
-
       <section className="project-content">
-
-        {/* LEFT */}
 
         <div className="project-main-content">
 
           <div className="project-section">
 
             <p className="project-section-label">
-              01 — PANORAMICA
+              01 — {content.overview}
             </p>
 
             <h2>
-              Il progetto
+              {language === "it" ? "Il progetto" : "The project"}
             </h2>
 
             <p>
@@ -163,16 +151,15 @@ function ProjectDetail() {
 
           </div>
 
-
           {project.features && (
             <div className="project-section">
 
               <p className="project-section-label">
-                02 — FUNZIONALITÀ
+                02 — {content.features}
               </p>
 
               <h2>
-                Funzionalità principali
+                {content.mainFeatures}
               </h2>
 
               <div className="features-list">
@@ -199,11 +186,6 @@ function ProjectDetail() {
 
         </div>
 
-
-        {/* =====================
-            RIGHT SIDEBAR
-        ====================== */}
-
         <aside className="project-sidebar">
 
           <div className="project-info-card">
@@ -211,7 +193,7 @@ function ProjectDetail() {
             <div className="info-group">
 
               <span className="info-label">
-                STACK
+                {content.stack}
               </span>
 
               <div className="detail-technologies">
@@ -226,12 +208,11 @@ function ProjectDetail() {
 
             </div>
 
-
             {project.type && (
               <div className="info-group">
 
                 <span className="info-label">
-                  TIPO
+                  {content.type}
                 </span>
 
                 <p>
@@ -241,12 +222,11 @@ function ProjectDetail() {
               </div>
             )}
 
-
             {project.year && (
               <div className="info-group">
 
                 <span className="info-label">
-                  ANNO
+                  {content.year}
                 </span>
 
                 <p>

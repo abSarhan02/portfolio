@@ -1,55 +1,32 @@
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/siteContent";
+
 import "./About.css";
 
 function About() {
+  const { language } = useLanguage();
+  const content = translations[language].about;
+
   return (
     <main className="about-page">
       <section className="about-header">
-        <p className="section-label">ABOUT ME</p>
+        <p className="section-label">{content.label}</p>
 
-        <h1>Chi sono</h1>
+        <h1>{content.title}</h1>
 
-        <p>
-          Full Stack Developer e IT Specialist con esperienza
-          nello sviluppo web, supporto IT e gestione di
-          applicazioni software.
-        </p>
+        <p>{content.intro}</p>
       </section>
 
       <section className="about-grid">
-        <div className="about-card">
-          <span className="about-number">01</span>
+        {content.cards.map((card) => (
+          <div className="about-card" key={card.number}>
+            <span className="about-number">{card.number}</span>
 
-          <h2>Sviluppo</h2>
+            <h2>{card.title}</h2>
 
-          <p>
-            Mi concentro principalmente sullo sviluppo con Java,
-            Spring Boot e tecnologie frontend moderne come React,
-            Angular e Vue.
-          </p>
-        </div>
-
-        <div className="about-card">
-          <span className="about-number">02</span>
-
-          <h2>Esperienza IT</h2>
-
-          <p>
-            Ho lavorato anche in ambito supporto IT,
-            e-learning, gestione applicativa e deployment.
-          </p>
-        </div>
-
-        <div className="about-card">
-          <span className="about-number">03</span>
-
-          <h2>Obiettivo</h2>
-
-          <p>
-            Voglio continuare a crescere come sviluppatore,
-            lavorando su applicazioni concrete e progetti
-            strutturati.
-          </p>
-        </div>
+            <p>{card.text}</p>
+          </div>
+        ))}
       </section>
     </main>
   );

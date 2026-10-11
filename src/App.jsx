@@ -1,7 +1,6 @@
-import "./App.css";
-
 import { Routes, Route } from "react-router-dom";
 
+import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/Navbar/Navbar";
 import StarsBackground from "./components/StarsBackground/StarsBackground";
 
@@ -13,7 +12,7 @@ import ProjectDetail from "./pages/ProjectDetail/ProjectDetail";
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <StarsBackground />
       <Navbar />
       <Routes>
@@ -23,7 +22,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
       </Routes>
-    </>
+    </LanguageProvider>
   );
 }
 

@@ -1,8 +1,14 @@
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+
+import { useLanguage } from "../../context/LanguageContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import { navigationItems, translations } from "../../data/siteContent";
+
+import "./Navbar.css";
 
 function Navbar() {
+  const { language, toggleLanguage } = useLanguage();
+
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
@@ -11,23 +17,24 @@ function Navbar() {
         </NavLink>
 
         <ul className="nav-links">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/about">Chi sono</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/projects">Progetti</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/contact">Contatti</NavLink>
-          </li>
+          {navigationItems.map(({ to, key }) => (
+            <li key={to}>
+              <NavLink to={to}>{translations[language].nav[key]}</NavLink>
+            </li>
+          ))}
         </ul>
+
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="language-toggle"
+            onClick={toggleLanguage}
+            aria-label="Change language"
+          >
+            {language === "it" ? "EN" : "IT"}
+          </button>
           <ThemeToggle />
+        </div>
       </nav>
     </header>
   );
